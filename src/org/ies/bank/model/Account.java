@@ -1,8 +1,10 @@
 package org.ies.bank.model;
 
 
+import javax.swing.plaf.PanelUI;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Account {
 
@@ -15,6 +17,24 @@ public class Account {
         this.balance = balance;
         this.customer = customer;
     }
+
+
+    //MÉTODOS
+
+    //Dado un IBAN, mostrar la información de la cuenta con ese IBAN. Si no existe una cuenta con ese IBAN devuelve null.
+    public String showIban(String iban){
+
+        for (Customer cuentas: customer){
+
+            if (cuentas.getName().equals(iban)){
+
+                return
+            }
+        }
+    }
+
+
+
 
     public String getIban() {
         return iban;
