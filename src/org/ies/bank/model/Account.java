@@ -1,30 +1,29 @@
 package org.ies.bank.model;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Account {
 
     private String iban;
     private double balance;
-    private Customer customer;
+    private Customer customers;
 
-    public Account(String iban, double balance, Customer customer) {
+    public Account(String iban, double balance, Customer customers) {
         this.iban = iban;
         this.balance = balance;
-        this.customer = customer;
+        this.customers = customers;
     }
 
     //MÉTODOS
 
-    //Dado un IBAN, mostrar la información de la cuenta con ese IBAN. Si no existe una cuenta con ese IBAN devuelve null.
-    public String showIban(String iban){
+    //Dado un IBAN, mostrar la información de la cuenta con ese IBAN.
+    public void showIban(String iban){
 
-        for (Customer cuentas: customer){
+        for (Customer cuentas: customers){
 
             if (cuentas.getName().equals(iban)){
 
-                return
+
             }
         }
     }
@@ -47,11 +46,11 @@ public class Account {
     }
 
     public Customer getCustomer() {
-        return customer;
+        return customers;
     }
 
     public void setCustomer(Customer customer) {
-        this.customer = customer;
+        this.customers = customer;
     }
 
     @Override
@@ -59,12 +58,12 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return Double.compare(balance, account.balance) == 0 && Objects.equals(iban, account.iban) && Objects.equals(customer, account.customer);
+        return Double.compare(balance, account.balance) == 0 && Objects.equals(iban, account.iban) && Objects.equals(customers, account.customers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(iban, balance, customer);
+        return Objects.hash(iban, balance, customers);
     }
 
     @Override
@@ -72,7 +71,7 @@ public class Account {
         return "Account{" +
                 "iban='" + iban + '\'' +
                 ", balance=" + balance +
-                ", customer=" + customer +
+                ", customer=" + customers +
                 '}';
     }
 }
