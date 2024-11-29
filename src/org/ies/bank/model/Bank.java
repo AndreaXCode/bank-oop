@@ -15,11 +15,40 @@ public class Bank {
     }
 
     //Mostrar todas las cuentas del banco (IBAN, saldo y NIF del cliente)
-    public void showCounts(){
+    public void showCountsBank(){
 
         for (Account account: accounts){
 
             System.out.println(account);
+        }
+
+
+    }
+
+    //Dado un IBAN, mostrar la información de la cuenta con ese IBAN.
+
+
+    public void showInfo(String iban){
+
+        for (Account account: accounts){
+
+            if (account.getIban().equals(iban)){
+                System.out.println("IBAN:" + account);
+
+            }
+        }
+
+    }
+
+    //Dado un NIF, mostrar todas las cuentas del cliente con ese NIF
+    public void showCountsClient(String nif){
+
+        for (Account account: accounts){
+
+            Customer customer = account.getCustomer();
+            if (customer.getNif().equals(nif));
+
+
         }
 
 
