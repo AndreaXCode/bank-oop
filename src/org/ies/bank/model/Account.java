@@ -1,23 +1,19 @@
 package org.ies.bank.model;
 
-
-import javax.swing.plaf.PanelUI;
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class Account {
 
     private String iban;
     private double balance;
-    private Customer[] customer;
+    private Customer customer;
 
-    public Account(String iban, double balance, Customer[] customer) {
+    public Account(String iban, double balance, Customer customer) {
         this.iban = iban;
         this.balance = balance;
         this.customer = customer;
     }
-
 
     //MÉTODOS
 
@@ -32,8 +28,6 @@ public class Account {
             }
         }
     }
-
-
 
 
     public String getIban() {
@@ -52,11 +46,11 @@ public class Account {
         this.balance = balance;
     }
 
-    public Customer[] getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer[] customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
@@ -65,21 +59,20 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return Double.compare(balance, account.balance) == 0 && Objects.equals(iban, account.iban) && Objects.deepEquals(customer, account.customer);
+        return Double.compare(balance, account.balance) == 0 && Objects.equals(iban, account.iban) && Objects.equals(customer, account.customer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(iban, balance, Arrays.hashCode(customer));
+        return Objects.hash(iban, balance, customer);
     }
-
 
     @Override
     public String toString() {
         return "Account{" +
                 "iban='" + iban + '\'' +
                 ", balance=" + balance +
-                ", customer=" + Arrays.toString(customer) +
+                ", customer=" + customer +
                 '}';
     }
 }
