@@ -15,6 +15,8 @@ public class Bank {
     }
 
     //Mostrar todas las cuentas del banco (IBAN, saldo y NIF del cliente)
+
+    //Preguntar a Mikel
     public void showCountsBank(){
 
         for (Account account: accounts){
@@ -32,10 +34,20 @@ public class Bank {
 
         for (Account account: accounts){
 
-            if (account.getIban().equals(iban)){
-                System.out.println("IBAN:" + account);
+            for (Customer customer: account.getCustomers()){
 
+                if (account.getIban().equals(iban)){
+
+                    System.out.println("Nombre: " + customer.getName());
+                    System.out.println("Apellido: " + customer.getSurname());
+                    System.out.println("NIF: " + customer.getNif());
+                    System.out.println("IBAN:" + account.getIban());
+                    System.out.println("Saldo: " + account.getBalance());
+
+                }
             }
+
+
         }
 
     }
@@ -43,7 +55,10 @@ public class Bank {
     //Dado un NIF, mostrar todas las cuentas del cliente con ese NIF
     public void showCountsClient(String nif){
 
+        //Preguntar a Mikel
+
         for (Account account: accounts){
+
 
             Customer customer = account.getCustomer();
             if (customer.getNif().equals(nif));

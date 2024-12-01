@@ -6,27 +6,14 @@ public class Account {
 
     private String iban;
     private double balance;
-    private Customer customers;
+    private Customer[] customers;
 
-    public Account(String iban, double balance, Customer customers) {
+    public Account(String iban, double balance, Customer[] customers) {
         this.iban = iban;
         this.balance = balance;
         this.customers = customers;
     }
 
-    //MÉTODOS
-
-    //Dado un IBAN, mostrar la información de la cuenta con ese IBAN.
-    public void showIban(String iban){
-
-        for (Customer cuentas: customers){
-
-            if (cuentas.getName().equals(iban)){
-
-
-            }
-        }
-    }
 
 
     public String getIban() {
@@ -45,12 +32,12 @@ public class Account {
         this.balance = balance;
     }
 
-    public Customer getCustomer() {
+    public Customer[] getCustomers() {
         return customers;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customers = customer;
+    public void setCustomers(Customer[] customers) {
+        this.customers = customers;
     }
 
     @Override
