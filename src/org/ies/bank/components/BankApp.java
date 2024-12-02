@@ -26,6 +26,7 @@ public class BankApp {
 
         for (int i = 0; i < size; i++) {
 
+            //Revisar
             final AccountReader accountReader = null;
             accounts[i] = accountReader.read();
 
@@ -50,6 +51,12 @@ public class BankApp {
             if (option ==1){
 
                 //Mostrar las cuentas del banco
+                for (Account account: accounts){
+
+                    System.out.println("IBAN: " + account.getIban());
+                    System.out.println("Saldo: " + account.getBalance());
+
+                }
 
             }
 
