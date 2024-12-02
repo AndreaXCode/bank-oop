@@ -75,13 +75,6 @@ public class Bank {
     // Si no se encuentra la cuenta con ese IBAN muestra el mensaje "No se encuentra la cuenta"
     public void getIntoCount(String iban, int amount){
 
-//        System.out.println("Introduce un IBAN:");
-//        String iban = scanner.nextLine();
-//
-//
-//        System.out.println("Introduce una cantidad");
-//        int amount = scanner.nextInt();
-//        scanner.nextLine();
 
         for (Account account: accounts){
 
@@ -98,7 +91,6 @@ public class Bank {
         }
 
     }
-
 
 
 

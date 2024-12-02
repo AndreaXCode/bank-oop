@@ -1,4 +1,5 @@
 package org.ies.bank.components;
+
 import org.ies.bank.model.Account;
 import org.ies.bank.model.Bank;
 
@@ -14,7 +15,7 @@ public class BankApp {
         this.bank = bank;
     }
 
-    public void run(){
+    public void run() {
 
 
         //Pide los datos de un banco
@@ -54,7 +55,7 @@ public class BankApp {
             option = scanner.nextInt();
             scanner.nextLine();
 
-            if (option ==1){
+            if (option == 1) {
 
                 //Mostrar las cuentas del banco
 
@@ -94,53 +95,20 @@ public class BankApp {
                 bank.getIntoCount(iban, amount);
 
 
-
             } else if (option == 5) {
 
                 System.out.println("Introduce un IBAN:");
                 String iban = scanner.nextLine();
 
-                System.out.println("Introduce la cantidad de dinero que quiere ingresar:");
+                System.out.println("Introduce la cantidad de dinero que quiere sacar:");
                 int amount = scanner.nextInt();
                 scanner.nextLine();
-
-                for (Account account: accounts){
-
-                    if (account.getIban().equals(iban)){
-
-                        //Si hay suficiente saldo, se reduce el saldo. Si no hay suficiente saldo se muestra "Saldo insuficiente"
-
-                        if (account.getBalance() > amount){
-
-                            System.out.println(account.getBalance() - amount);
-
-                        } else if (account.getBalance() < amount) {
-
-                            System.out.println("Saldo insuficiente");
-
-                        }
-
-
-                    } else {
-
-                        System.out.println("No existe la cuenta");
-                    }
-
-
-                }
-
-
-
-
-
+                bank.getIntoCount(iban, -amount);
 
             }
 
 
         } while (option != 6);
-
-
-
 
 
     }
