@@ -28,22 +28,17 @@ public class AccountReader {
         double balance = scanner.nextDouble();
         scanner.nextLine();
 
-        System.out.println("Cuantos clientes hay");
-        int size = scanner.nextInt();
-        scanner.nextLine();
+        System.out.println("Cliente:");
+        String customer = scanner.nextLine();
 
-        Customer[] customers = new Customer[size];
 
-        for (int i = 0; i < size; i++) {
 
-            customers[i] = customerReader.read();
-        }
 
         return new Account(
 
                 iban,
                 balance,
-                customers
+                customer
 
         );
 

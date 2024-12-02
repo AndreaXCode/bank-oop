@@ -2,9 +2,12 @@ package org.ies.bank.model;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Scanner;
 
 
 public class Bank {
+
+    Scanner scanner = new Scanner(System.in);
 
     private String bankName;
     private Account[] accounts;  //siempre en plural
@@ -16,7 +19,6 @@ public class Bank {
 
     //Mostrar todas las cuentas del banco (IBAN, saldo y NIF del cliente)
 
-    //Preguntar a Mikel
     public void showCountsBank(){
 
         for (Account account: accounts){
@@ -34,19 +36,16 @@ public class Bank {
 
         for (Account account: accounts){
 
-            for (Customer customer: account.getCustomers()){
 
                 if (account.getIban().equals(iban)){
 
-                    System.out.println("Nombre: " + customer.getName());
-                    System.out.println("Apellido: " + customer.getSurname());
-                    System.out.println("NIF: " + customer.getNif());
+                    System.out.println("Nombre: " + account.getCustomer().getName());
+                    System.out.println("Apellido: " + account.getCustomer().getSurname());
+                    System.out.println("NIF: " + account.getCustomer().getNif());
                     System.out.println("IBAN:" + account.getIban());
                     System.out.println("Saldo: " + account.getBalance());
 
                 }
-            }
-
 
         }
 
@@ -55,13 +54,16 @@ public class Bank {
     //Dado un NIF, mostrar todas las cuentas del cliente con ese NIF
     public void showCountsClient(String nif){
 
-        //Preguntar a Mikel
 
         for (Account account: accounts){
 
 
             Customer customer = account.getCustomer();
-            if (customer.getNif().equals(nif));
+            if (customer.getNif().equals(nif)){
+
+                System.out.println("--Cuentas con ese NIF:--");
+                System.out.println(account);
+            }
 
 
         }
@@ -71,24 +73,31 @@ public class Bank {
 
     //Dado un IBAN y una cantidad de dinero, ingresar esa cantidad en la cuenta con ese IBAN.
     // Si no se encuentra la cuenta con ese IBAN muestra el mensaje "No se encuentra la cuenta"
-    public int getIntoCount(String iban, int amount){
+    public void getIntoCount(String iban, int amount){
 
+//        System.out.println("Introduce un IBAN:");
+//        String iban = scanner.nextLine();
+//
+//
+//        System.out.println("Introduce una cantidad");
+//        int amount = scanner.nextInt();
+//        scanner.nextLine();
 
         for (Account account: accounts){
 
             if (account.getIban().equals(iban)){
 
-                System.out.println("IBAN: " + account.getIban() + "Cantidad: " + account.getBalance());
+                System.out.println("IBAN: " + account.getIban() + "Cantidad: " + account.getBalance() + amount);
 
+
+            } else {
+
+                System.out.println("No se encuentra la cuenta");
             }
 
         }
 
-
-
     }
-
-
 
 
 

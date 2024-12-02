@@ -6,15 +6,13 @@ public class Account {
 
     private String iban;
     private double balance;
-    private Customer[] customers;
+    private Customer customer;
 
-    public Account(String iban, double balance, Customer[] customers) {
+    public Account(String iban, double balance, Customer customer) {
         this.iban = iban;
         this.balance = balance;
-        this.customers = customers;
+        this.customer = customer;
     }
-
-
 
     public String getIban() {
         return iban;
@@ -32,12 +30,12 @@ public class Account {
         this.balance = balance;
     }
 
-    public Customer[] getCustomers() {
-        return customers;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomers(Customer[] customers) {
-        this.customers = customers;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override
@@ -45,12 +43,12 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return Double.compare(balance, account.balance) == 0 && Objects.equals(iban, account.iban) && Objects.equals(customers, account.customers);
+        return Double.compare(balance, account.balance) == 0 && Objects.equals(iban, account.iban) && Objects.equals(customer, account.customer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(iban, balance, customers);
+        return Objects.hash(iban, balance, customer);
     }
 
     @Override
@@ -58,7 +56,7 @@ public class Account {
         return "Account{" +
                 "iban='" + iban + '\'' +
                 ", balance=" + balance +
-                ", customer=" + customers +
+                ", customer=" + customer +
                 '}';
     }
 }
