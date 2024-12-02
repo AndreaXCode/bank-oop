@@ -29,7 +29,7 @@ public class AccountReader {
         scanner.nextLine();
 
         System.out.println("Cliente:");
-        String customer = scanner.nextLine();
+        Customer customer = customerReader.read();
 
 
 

@@ -1,7 +1,11 @@
 package org.ies.bank;
 
+import org.ies.bank.components.BankApp;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        BankApp bankApp = null;
+        bankApp.run();
     }
 }
