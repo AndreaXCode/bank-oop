@@ -71,26 +71,65 @@ public class Bank {
 
     }
 
+
     //Dado un IBAN y una cantidad de dinero, ingresar esa cantidad en la cuenta con ese IBAN.
     // Si no se encuentra la cuenta con ese IBAN muestra el mensaje "No se encuentra la cuenta"
-    public void getIntoCount(String iban, int amount){
 
+
+    public Account findAccount(String iban){
 
         for (Account account: accounts){
 
             if (account.getIban().equals(iban)){
 
-                System.out.println("IBAN: " + account.getIban() + "Cantidad: " + account.getBalance() + amount);
+                return account;
 
-
-            } else {
-
-                System.out.println("No se encuentra la cuenta");
             }
-
         }
 
+        return null;
+
     }
+
+
+    public void getIntoCount(String iban, double amount){
+
+        Account account = findAccount(iban);
+
+        if (account == null){
+
+            System.out.println("No se ha encontrado ninguna cuenta");
+
+        } else {
+
+            account.setBalance(account.getBalance() + amount);
+            System.out.println("Saldo: " + account.getBalance());
+        }
+
+
+    }
+
+    //Dado un NIF, devuelve el número de cuentas de ese cliente.
+    public int countNumber(String nif){
+
+        int counter = 0;
+
+        for (Account account: accounts){
+
+            if (account.getCustomer().getNif().equals(nif)){
+
+                counter++;
+            }
+        }
+
+        return counter;
+    }
+
+
+
+
+
+
 
 
 

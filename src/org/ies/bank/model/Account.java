@@ -14,6 +14,11 @@ public class Account {
         this.customer = customer;
     }
 
+    public void deposit(){
+
+
+    }
+
     public String getIban() {
         return iban;
     }

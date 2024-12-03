@@ -103,8 +103,17 @@ public class BankApp {
                 System.out.println("Introduce la cantidad de dinero que quiere sacar:");
                 int amount = scanner.nextInt();
                 scanner.nextLine();
+
+                //Para sacar (restar)
                 bank.getIntoCount(iban, -amount);
 
+            } else if (option == 6) {
+
+                System.out.println("saliendo del programa...");
+
+            } else {
+
+                System.out.println("Opción inválida");
             }
 
 
