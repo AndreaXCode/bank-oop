@@ -2,6 +2,7 @@ package org.ies.bank.components;
 
 import org.ies.bank.model.Account;
 import org.ies.bank.model.Bank;
+import org.ies.bank.model.Customer;
 
 import java.util.Scanner;
 
@@ -49,7 +50,9 @@ public class BankApp {
             System.out.println("3.Mostrar los datos de las cuentas de un cliente");
             System.out.println("4.Ingresar dinero en cuenta");
             System.out.println("5.Sacar dinero de una cuenta");
-            System.out.println("6.Salir");
+            System.out.println("6.Mostrar el número de cuentas de un cliente");
+            System.out.println("7.Mostrar los datos del cliente al que pertenece la cuenta");
+            System.out.println("8.Salir");
 
             //Leer la opcion
             option = scanner.nextInt();
@@ -109,15 +112,38 @@ public class BankApp {
 
             } else if (option == 6) {
 
-                System.out.println("saliendo del programa...");
+                System.out.println("Introduce un NIF:");
+                String nif = scanner.nextLine();
 
-            } else {
+
+                int count = bank.countNumber(nif);
+                System.out.println(count);
+
+
+
+            } else if (option == 7) {
+
+                System.out.println("Introduce un IBAN:");
+                String iban = scanner.nextLine();
+
+               Customer data = bank.findAccountCustomer(iban);
+                System.out.println("Datos del cliente: " + data);
+
+
+
+            } else if (option == 8){
+
+                System.out.println("Saliendo del menu...");
+            }
+
+
+            else {
 
                 System.out.println("Opción inválida");
             }
 
 
-        } while (option != 6);
+        } while (option != 8);
 
 
     }

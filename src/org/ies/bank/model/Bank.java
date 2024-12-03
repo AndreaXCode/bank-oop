@@ -19,9 +19,9 @@ public class Bank {
 
     //Mostrar todas las cuentas del banco (IBAN, saldo y NIF del cliente)
 
-    public void showCountsBank(){
+    public void showCountsBank() {
 
-        for (Account account: accounts){
+        for (Account account : accounts) {
 
             System.out.println("IBAN: " + account.getIban() + "Saldo: " + account.getBalance() + "NIF: " + account.getCustomer().getNif());
         }
@@ -32,34 +32,34 @@ public class Bank {
     //Dado un IBAN, mostrar la información de la cuenta con ese IBAN.
 
 
-    public void showInfo(String iban){
+    public void showInfo(String iban) {
 
-        for (Account account: accounts){
+        for (Account account : accounts) {
 
 
-                if (account.getIban().equals(iban)){
+            if (account.getIban().equals(iban)) {
 
-                    System.out.println("Nombre: " + account.getCustomer().getName());
-                    System.out.println("Apellido: " + account.getCustomer().getSurname());
-                    System.out.println("NIF: " + account.getCustomer().getNif());
-                    System.out.println("IBAN:" + account.getIban());
-                    System.out.println("Saldo: " + account.getBalance());
+                System.out.println("Nombre: " + account.getCustomer().getName());
+                System.out.println("Apellido: " + account.getCustomer().getSurname());
+                System.out.println("NIF: " + account.getCustomer().getNif());
+                System.out.println("IBAN:" + account.getIban());
+                System.out.println("Saldo: " + account.getBalance());
 
-                }
+            }
 
         }
 
     }
 
     //Dado un NIF, mostrar todas las cuentas del cliente con ese NIF
-    public void showCountsClient(String nif){
+    public void showCountsClient(String nif) {
 
 
-        for (Account account: accounts){
+        for (Account account : accounts) {
 
 
             Customer customer = account.getCustomer();
-            if (customer.getNif().equals(nif)){
+            if (customer.getNif().equals(nif)) {
 
                 System.out.println("--Cuentas con ese NIF:--");
                 System.out.println(account);
@@ -76,11 +76,11 @@ public class Bank {
     // Si no se encuentra la cuenta con ese IBAN muestra el mensaje "No se encuentra la cuenta"
 
 
-    public Account findAccount(String iban){
+    public Account findAccount(String iban) {
 
-        for (Account account: accounts){
+        for (Account account : accounts) {
 
-            if (account.getIban().equals(iban)){
+            if (account.getIban().equals(iban)) {
 
                 return account;
 
@@ -92,11 +92,11 @@ public class Bank {
     }
 
 
-    public void getIntoCount(String iban, double amount){
+    public void getIntoCount(String iban, double amount) {
 
         Account account = findAccount(iban);
 
-        if (account == null){
+        if (account == null) {
 
             System.out.println("No se ha encontrado ninguna cuenta");
 
@@ -110,13 +110,13 @@ public class Bank {
     }
 
     //Dado un NIF, devuelve el número de cuentas de ese cliente.
-    public int countNumber(String nif){
+    public int countNumber(String nif) {
 
         int counter = 0;
 
-        for (Account account: accounts){
+        for (Account account : accounts) {
 
-            if (account.getCustomer().getNif().equals(nif)){
+            if (account.getCustomer().getNif().equals(nif)) {
 
                 counter++;
             }
@@ -126,11 +126,22 @@ public class Bank {
     }
 
 
+    //Dado un IBAN, devuelve los datos del cliente al que pertenece la cuenta. Si no existe la cuenta devuelve null.
+    public Customer findAccountCustomer(String iban) {
+
+        Account account = findAccount(iban);
+
+        if (account != null) {
+
+            return account.getCustomer();
+
+        } else {
+
+            return null;
+        }
 
 
-
-
-
+    }
 
 
     public String getBankName() {
