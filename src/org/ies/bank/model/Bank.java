@@ -64,14 +64,12 @@ public class Bank {
 
                 System.out.println("--Cuentas con ese NIF--");
 
-                account.showInfo();
+                customer.showInfo();
 
                 //System.out.println(account);
             }
 
-
         }
-
 
     }
 
@@ -79,37 +77,31 @@ public class Bank {
     //Dado un IBAN y una cantidad de dinero, ingresar esa cantidad en la cuenta con ese IBAN.
     // Si no se encuentra la cuenta con ese IBAN muestra el mensaje "No se encuentra la cuenta"
 
-
-    public Account findAccount(String iban) {
-
-        for (Account account : accounts) {
-
-            if (account.getIban().equals(iban)) {
-
-                return account;
-
-            }
-        }
-
-        return null;
-
-    }
-
-
     public void getIntoCount(String iban, double amount) {
 
-        Account account = findAccount(iban);
+        //Account puede ser sustituido por var
+        //Busca una cuenta con ese IBAN
+        var account = findAccount(iban);
 
-        if (account == null) {
+        //Si la cuenta existe hacer:
+        if (account != null) {
 
-            System.out.println("No se ha encontrado ninguna cuenta");
+            //Si el saldo de esa cuenta es mayor o igual que el dinero que se quiere sacar:
+            if (account.getBalance() >= amount){
+
+                //Restar ese dinero a nustro saldo
+                account.deposit(-amount);
+
+            } else {
+
+                System.out.println("No hay suficiente saldo, a trabajarrr");
+            }
 
         } else {
 
-            account.setBalance(account.getBalance() + amount);
-            System.out.println("Saldo: " + account.getBalance());
-        }
+                System.out.println("No se encuentra la cuenta");
 
+        }
 
     }
 
@@ -148,6 +140,23 @@ public class Bank {
     }
 
 
+    // Método para buscar una cuenta, luego la devuelve
+    public Account findAccount(String iban) {
+
+        for (Account account : accounts) {
+
+            if (account.getIban().equals(iban)) {
+
+                return account;
+
+            }
+        }
+
+        return null;
+
+    }
+
+
     public String getBankName() {
         return bankName;
     }
@@ -156,14 +165,13 @@ public class Bank {
         this.bankName = bankName;
     }
 
-    public Account[] getAccount() {
+    public Account[] getAccounts() {
         return accounts;
     }
 
-    public void setAccount(Account[] account) {
-        this.accounts = account;
+    public void setAccounts(Account[] accounts) {
+        this.accounts = accounts;
     }
-
 
     @Override
     public boolean equals(Object o) {

@@ -15,13 +15,21 @@ public class Account {
     }
 
 
-
+    //Método que muestra el IBAN  y el saldo de las cuentas
     public void showInfo(){
 
         customer.showInfo();
         System.out.println("IBAN:" + iban);
         System.out.println("Saldo: " + balance);
     }
+
+
+    //Método para el déposito
+    public void deposit(double amount){
+
+        balance += amount;
+    }
+
 
     public String getIban() {
         return iban;
