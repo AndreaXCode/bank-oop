@@ -28,10 +28,11 @@ public class AccountReader {
         double balance = scanner.nextDouble();
         scanner.nextLine();
 
-        System.out.println("Cliente:");
+        // Saca lo que tengo en customerReader
         Customer customer = customerReader.read();
 
 
+        // Control + clic en read y me lleva directamente a customerReader
 
 
         return new Account(

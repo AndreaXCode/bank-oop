@@ -29,6 +29,7 @@ public class BankReader {
 
         Account[] account = new Account[size];
 
+        // Otra opción sería en vez de size, poner la logitud del array --> account.length
         for (int i = 0; i < size; i++) {
 
             account[i] = accountReader.read();
@@ -38,7 +39,6 @@ public class BankReader {
 
                 bankName,
                 account
-
 
         );
     }

@@ -2,26 +2,26 @@ package org.ies.bank.model;
 
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Scanner;
 
 
 public class Bank {
 
-    Scanner scanner = new Scanner(System.in);
-
     private String bankName;
     private Account[] accounts;  //siempre en plural
 
+    // Generamos el constructor
     public Bank(String bankName, Account[] account) {
         this.bankName = bankName;
         this.accounts = account;
     }
 
+
     //Mostrar todas las cuentas del banco (IBAN, saldo y NIF del cliente)
 
     public void showCountsBank() {
 
-        for (Account account : accounts) {
+        //Account puede ser sustituido por var
+        for (var account : accounts) {
 
             System.out.println("IBAN: " + account.getIban() + "Saldo: " + account.getBalance() + "NIF: " + account.getCustomer().getNif());
         }
@@ -39,11 +39,7 @@ public class Bank {
 
             if (account.getIban().equals(iban)) {
 
-                System.out.println("Nombre: " + account.getCustomer().getName());
-                System.out.println("Apellido: " + account.getCustomer().getSurname());
-                System.out.println("NIF: " + account.getCustomer().getNif());
-                System.out.println("IBAN:" + account.getIban());
-                System.out.println("Saldo: " + account.getBalance());
+               account.showInfo();
 
             }
 
@@ -55,10 +51,12 @@ public class Bank {
     public void showCountsClient(String nif) {
 
 
+        // Se recorren las cuentas comprobando si son del cliente con ese nif.
         for (Account account : accounts) {
 
-
+            // Dentro de customer esta el NIF
             Customer customer = account.getCustomer();
+
             if (customer.getNif().equals(nif)) {
 
                 System.out.println("--Cuentas con ese NIF:--");

@@ -1,6 +1,5 @@
 package org.ies.bank.components;
 
-import org.ies.bank.model.Account;
 import org.ies.bank.model.Bank;
 import org.ies.bank.model.Customer;
 
@@ -8,43 +7,35 @@ import java.util.Scanner;
 
 public class BankApp {
 
+    // Se necesita el Scanner para hacer el menu
     private final Scanner scanner;
-    private final Bank bank;
+    // Se necesita el BankReader para pedir un banco al usuario
+    private final BankReader bankReader;
 
-    public BankApp(Scanner scanner, Bank bank) {
+    // Solo se inyectan componentes
+    public BankApp(Scanner scanner, BankReader bankReader) {
         this.scanner = scanner;
-        this.bank = bank;
+        this.bankReader = bankReader;
     }
 
     public void run() {
 
+        // Siempre empezamos pidiendo los datos con el reader
+        // Creamos una variable llamada Bank con el objeto bank, que guardará y ejecutará "bankReader"
+        // De esta manera se verán los datos (lo que se pide).
+        Bank bank = bankReader.read();
 
-        //Pide los datos de un banco
-
-        System.out.println("--Datos del banco--");
-
-        System.out.println("Nombre del banco:");
-        String bankName = scanner.nextLine();
-
-        System.out.println("Cuantas cuentas hay");
-        int size = scanner.nextInt();
-        scanner.nextLine();
-
-        Account[] accounts = new Account[size];
-
-        for (int i = 0; i < size; i++) {
-
-            //Revisar
-            final AccountReader accountReader = null;
-            accounts[i] = accountReader.read();
-
-        }
 
         //Inicia un bucle de menú con las siguientes opciones
 
+
+        // Creo la variable option
         int option;
 
         do {
+
+            // Mostramos las opciones que tendrá nuestro menú
+
             System.out.println("1.Mostrar las cuentas del banco");
             System.out.println("2.Mostrar datos de una cuenta");
             System.out.println("3.Mostrar los datos de las cuentas de un cliente");
@@ -60,6 +51,7 @@ public class BankApp {
 
             if (option == 1) {
 
+                // Ejecuta el método showCountsBank que está dentro de bank
                 //Mostrar las cuentas del banco
 
                 bank.showCountsBank();
@@ -67,18 +59,24 @@ public class BankApp {
             } else if (option == 2) {
 
                 //Mostrar datos de una cuenta
-
-                System.out.println("Introduce un IBAN");
+                System.out.println("Introduce un IBAN:");
                 String iban = scanner.nextLine();
 
+
+                // Ejecuta el método showInfo que está dentro de bank
                 bank.showInfo(iban);
 
 
             } else if (option == 3) {
 
+                // Mostrar los datos de las cuentas de un cliente
+
+                // Se pide un nif
                 System.out.println("Introduce un NIF:");
                 String nif = scanner.nextLine();
 
+
+                // Ejecuta el método showCountsClient que está dentro de bank
                 bank.showCountsClient(nif);
 
 

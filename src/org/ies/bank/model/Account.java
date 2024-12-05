@@ -14,9 +14,13 @@ public class Account {
         this.customer = customer;
     }
 
-    public void deposit(){
 
 
+    public void showInfo(){
+
+        customer.showInfo();
+        System.out.println("IBAN:" + iban);
+        System.out.println("Saldo: " + balance);
     }
 
     public String getIban() {
