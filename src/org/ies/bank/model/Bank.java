@@ -29,16 +29,18 @@ public class Bank {
 
     }
 
-    //Dado un IBAN, mostrar la información de la cuenta con ese IBAN.
 
+    //Dado un IBAN, mostrar la información de la cuenta con ese IBAN.
 
     public void showInfo(String iban) {
 
-        for (Account account : accounts) {
+        //Account puede ser sustituido por var
+        for (var account : accounts) {
 
 
             if (account.getIban().equals(iban)) {
 
+                // Muestra el método showInfo de account
                account.showInfo();
 
             }
@@ -51,16 +53,20 @@ public class Bank {
     public void showCountsClient(String nif) {
 
 
-        // Se recorren las cuentas comprobando si son del cliente con ese nif.
-        for (Account account : accounts) {
+        // Se recorren las cuentas comprobando si son del cliente con ese nif
+        //Account puede ser sustituido por var
+        for (var account : accounts) {
 
-            // Dentro de customer esta el NIF
+            // Dentro de customer esta el NIF, forma resumida de hacerlo
             Customer customer = account.getCustomer();
 
             if (customer.getNif().equals(nif)) {
 
-                System.out.println("--Cuentas con ese NIF:--");
-                System.out.println(account);
+                System.out.println("--Cuentas con ese NIF--");
+
+                account.showInfo();
+
+                //System.out.println(account);
             }
 
 

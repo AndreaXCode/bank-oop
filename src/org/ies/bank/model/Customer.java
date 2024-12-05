@@ -16,9 +16,9 @@ public class Customer {
 
     public void showInfo(){
 
-        System.out.println("Nombre: " + getName());
-        System.out.println("Apellido: " + getSurname());
-        System.out.println("NIF: " + getNif());
+        System.out.println("Nombre: " + name);
+        System.out.println("Apellido: " + surname);
+        System.out.println("NIF: " + nif);
 
     }
 
