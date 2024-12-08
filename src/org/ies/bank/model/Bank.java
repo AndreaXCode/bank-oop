@@ -105,6 +105,22 @@ public class Bank {
 
     }
 
+    //Preguntar a Mikel
+    public void deposit(String iban, double amount){
+
+        var account = findAccount(iban);
+        if (account != null){
+            System.out.println("Saldo: " + amount);
+
+        } else {
+
+            System.out.println("Cuenta no encontrada");
+        }
+    }
+
+
+
+
     //Dado un NIF, devuelve el número de cuentas de ese cliente.
     public int countNumber(String nif) {
 
