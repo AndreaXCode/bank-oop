@@ -22,7 +22,7 @@ public class CustomerReader {
         System.out.println("Nombre:");
         String name = scanner.nextLine();
 
-        System.out.println("Apellido>");
+        System.out.println("Apellido:");
         String surname = scanner.nextLine();
 
 
