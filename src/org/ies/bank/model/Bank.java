@@ -105,7 +105,7 @@ public class Bank {
 
     }
 
-    //Preguntar a Mikel
+
     public void deposit(String iban, double amount){
 
         var account = findAccount(iban);
@@ -173,6 +173,45 @@ public class Bank {
         return null;
 
     }
+
+    // Método para contar cuentas de cliente
+    public int countAccounts(String nif){
+
+        int count = 0;
+
+        for (var account: accounts){
+
+            if (account.getCustomer().getNif().equals(nif)){
+
+                count ++;
+            }
+        }
+
+        return count;
+    }
+
+
+    // Método para buscar una cuenta, luego la devuelve
+    public Account findCustomer(String iban) {
+
+        for (Account account : accounts) {
+
+            if (account.getCustomer().equals(iban)) {
+
+                return account;
+
+            }
+        }
+
+        return null;
+
+    }
+
+
+
+
+
+
 
 
     public String getBankName() {
