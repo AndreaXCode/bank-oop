@@ -110,7 +110,9 @@ public class Bank {
 
         var account = findAccount(iban);
         if (account != null){
-            System.out.println("Saldo: " + amount);
+
+            account.deposit(amount);
+            account.showInfo();
 
         } else {
 

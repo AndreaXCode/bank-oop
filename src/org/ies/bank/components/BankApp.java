@@ -36,6 +36,7 @@ public class BankApp {
 
             // Mostramos las opciones que tendrá nuestro menú
 
+            System.out.println("Elige una opción:");
             System.out.println("1.Mostrar las cuentas del banco");
             System.out.println("2.Mostrar datos de una cuenta");
             System.out.println("3.Mostrar los datos de las cuentas de un cliente");
@@ -93,7 +94,7 @@ public class BankApp {
                 int amount = scanner.nextInt();
                 scanner.nextLine();
 
-                bank.getIntoCount(iban, amount);
+                bank.deposit(iban, amount);
 
 
             } else if (option == 5) {
@@ -124,9 +125,17 @@ public class BankApp {
                 System.out.println("Introduce un IBAN:");
                 String iban = scanner.nextLine();
 
-               Customer data = bank.findAccountCustomer(iban);
-                System.out.println("Datos del cliente: " + data);
+                Customer customer = bank.findAccountCustomer(iban);
 
+                if (iban == null){
+
+                    System.out.println("No existe la cuenta");
+
+                } else {
+
+                    System.out.println("Datos del cliente: " + customer);
+
+                }
 
 
             } else if (option == 8){
