@@ -50,7 +50,7 @@ public class Bank {
     }
 
     //Dado un NIF, mostrar todas las cuentas del cliente con ese NIF
-    public void showCountsClient(String nif) {
+    public void showAccountsClient(String nif) {
 
 
         // Se recorren las cuentas comprobando si son del cliente con ese nif
@@ -208,8 +208,31 @@ public class Bank {
     }
 
 
+    // Método de transferencia
 
+    public void tranfer(String iban, String iban2, double amount){
 
+        Account account = findAccount(iban);
+        Account account2 = findAccount(iban2);
+
+        if (account != null && account2 != null){
+
+            if (account.getBalance() >= amount){
+
+                account.deposit(-amount);
+                account2.deposit(+amount);
+
+            } else {
+
+                System.out.println("No hay suficiente dinero");
+            }
+
+        } else {
+
+            System.out.println("Una de las cuentas no existe");
+        }
+
+    }
 
 
 

@@ -81,7 +81,7 @@ public class BankApp {
 
 
                 // Ejecuta el método showCountsClient que está dentro de bank
-                bank.showCountsClient(nif);
+                bank.showAccountsClient(nif);
 
 
             } else if (option == 4) {

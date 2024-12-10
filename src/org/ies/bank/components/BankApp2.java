@@ -80,14 +80,7 @@ public class BankApp2 {
 
         // - Haz una trasnferencia de 500 euros desde "ES0001" a "ES0002"
 
-
-
-
-
-
-
-
-
+        bank.tranfer("ES0001","ES0002", 500);
 
 
 
