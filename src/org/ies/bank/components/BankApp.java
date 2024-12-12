@@ -185,27 +185,6 @@ public class BankApp {
 
                 bank.tranfer(iban, iban2, amount);
 
-//                // Buscar cuenta de origen, buscar cuenta de destino.
-//                Account account = bank.findAccount(iban);
-//                Account account2 = bank.findAccount(iban2);
-//
-//                // Comprobar que las cuentas existen
-//                if (account != null && account2 != null){
-//
-//                    if (account.getBalance() >= amount){
-//
-//
-//
-//                    }
-//
-//
-//
-//                } else {
-//
-//                    System.out.println("Una de las cuentas no existe");
-//                }
-
-
 
                 // El amount tiene que ser suficente en la cuenta de origen.
                 // En Bank.java creamos un método llamado tranfer, dentro llamaremos a varios métodos para conseguir lo anterior.

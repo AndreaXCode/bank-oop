@@ -37,12 +37,21 @@ public class BankApp3 {
 
         if (account != null){
 
-            account.deposit(-50);
+
+            if (account.getBalance() >= 50){
+
+                bank.getIntoCount("ES0003", -50);
+
+            } else {
+
+                System.out.println("No hay suficiente dinero en la cuenta");
+            }
 
         } else {
 
             System.out.println("No se ha encontado la cuenta");
         }
+
 
 
 
