@@ -1,13 +1,10 @@
 package org.ies.bank;
 
-import org.ies.bank.components.AccountReader;
-import org.ies.bank.components.BankApp;
-import org.ies.bank.components.BankReader;
-import org.ies.bank.components.CustomerReader;
+import org.ies.bank.components.*;
 
 import java.util.Scanner;
 
-public class Main {
+public class MainBankApp3 {
     public static void main(String[] args) {
 
         // Se necesita el scanner para leer
@@ -21,10 +18,10 @@ public class Main {
 
         BankReader bankReader = new BankReader(scanner, accountReader);
 
-        BankApp bankApp = new BankApp(scanner, bankReader);
+        BankApp3 bankApp3 = new BankApp3(bankReader);
 
         // Ejecutar run que está en BankApp
-        bankApp.run();
+        bankApp3.run();
     }
 }
 

@@ -55,9 +55,17 @@ public class BankApp3 {
         // Mete 300 en la cuenta ES004
 
         Account account2 = bank.findAccount("ES004");
-        account2.deposit(300);
+
 
         //hacer if
+        if (account2 != null){
+
+            account2.deposit(300);
+
+        } else {
+
+            System.out.println("No se ha encontado la cuenta");
+        }
 
 
         // Muestra los datos del titular de la cuenta ES0001

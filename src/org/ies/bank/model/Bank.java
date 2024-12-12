@@ -23,7 +23,7 @@ public class Bank {
         //Account puede ser sustituido por var
         for (var account : accounts) {
 
-            System.out.println("IBAN: " + account.getIban() + "Saldo: " + account.getBalance() + "NIF: " + account.getCustomer().getNif());
+            System.out.println("IBAN: " + account.getIban() + " Saldo: " + account.getBalance() + " NIF: " + account.getCustomer().getNif());
         }
 
 
@@ -43,6 +43,9 @@ public class Bank {
                 // Muestra el método showInfo de account
                account.showInfo();
 
+            } else {
+
+                System.out.println("No existe esa cuenta");
             }
 
         }
@@ -66,7 +69,10 @@ public class Bank {
 
                 customer.showInfo();
 
-                //System.out.println(account);
+
+            } else {
+
+                System.out.println("No existe esa cuenta");
             }
 
         }
@@ -86,16 +92,25 @@ public class Bank {
         //Si la cuenta existe hacer:
         if (account != null) {
 
-            //Si el saldo de esa cuenta es mayor o igual que el dinero que se quiere sacar:
-            if (account.getBalance() >= amount){
-
-                //Restar ese dinero a nustro saldo
-                account.deposit(-amount);
+            if (amount >= 0){
+                account.deposit(amount);
+                account.showInfo();
 
             } else {
+                //Si el saldo de esa cuenta es mayor o igual que el dinero que se quiere sacar:
+                if (account.getBalance() >= -amount){
 
-                System.out.println("No hay suficiente saldo, a trabajarrr");
+                    //Restar ese dinero a nustro saldo
+                    account.deposit(amount);
+                    account.showInfo();
+
+                } else {
+
+                    System.out.println("No hay suficiente saldo, a trabajarrr");
+                }
             }
+
+
 
         } else {
 
@@ -221,6 +236,10 @@ public class Bank {
 
                 account.deposit(-amount);
                 account2.deposit(+amount);
+
+                account.showInfo();
+                account2.showInfo();
+
 
             } else {
 

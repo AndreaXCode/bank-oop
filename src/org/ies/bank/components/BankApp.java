@@ -1,5 +1,6 @@
 package org.ies.bank.components;
 
+import org.ies.bank.model.Account;
 import org.ies.bank.model.Bank;
 import org.ies.bank.model.Customer;
 
@@ -112,6 +113,8 @@ public class BankApp {
                 //Para sacar (restar)
                 bank.getIntoCount(iban, -amount);
 
+
+
             } else if (option == 6) {
 
                 System.out.println("Introduce un NIF:");
@@ -170,9 +173,43 @@ public class BankApp {
 
                 // Realizar transferencia
 
-                //  Buscar cuenta de origen, buscar cuenta de destino.
-                //  El amount tiene que ser suficente en la cuenta de origen.
+                System.out.println("Introduce el IBAN de la cuenta origen:");
+                String iban = scanner.nextLine();
+
+                System.out.println("Introduce el IBAN de la cuenta destino:");
+                String iban2 = scanner.nextLine();
+
+                System.out.println("¿Que cantidad de dinero queire transferir?");
+                double amount = scanner.nextDouble();
+                scanner.nextLine();
+
+                bank.tranfer(iban, iban2, amount);
+
+//                // Buscar cuenta de origen, buscar cuenta de destino.
+//                Account account = bank.findAccount(iban);
+//                Account account2 = bank.findAccount(iban2);
+//
+//                // Comprobar que las cuentas existen
+//                if (account != null && account2 != null){
+//
+//                    if (account.getBalance() >= amount){
+//
+//
+//
+//                    }
+//
+//
+//
+//                } else {
+//
+//                    System.out.println("Una de las cuentas no existe");
+//                }
+
+
+
+                // El amount tiene que ser suficente en la cuenta de origen.
                 // En Bank.java creamos un método llamado tranfer, dentro llamaremos a varios métodos para conseguir lo anterior.
+
 
 
 
