@@ -28,4 +28,10 @@ public class MainBankApp {
     }
 }
 
+
 // El orden de los reader será: customer, account, bank
+
+
+// Customer  --> No tiene array
+// Account  --> Tiene un tipo Customer, sin array
+// Bank  --> Debe tener la mayoría de los métodos y tiene el array de cuentas
