@@ -21,10 +21,11 @@ public class Account {
         customer.showInfo();
         System.out.println("IBAN:" + iban);
         System.out.println("Saldo: " + balance);
+        System.out.println("NIF del cliente: " + customer.getNif());
     }
 
 
-    //Método para el déposito
+    //Método para el déposito  -->  deposit(amount): dado una cantidad ingresa esa cantidad en la a cuenta
     public void deposit(double amount){
 
         balance += amount;

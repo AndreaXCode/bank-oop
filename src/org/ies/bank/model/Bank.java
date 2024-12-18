@@ -86,13 +86,16 @@ public class Bank {
     public void getIntoCount(String iban, double amount) {
 
         //Account puede ser sustituido por var
-        //Busca una cuenta con ese IBAN
+        //Busca una cuenta con ese IBAN  --> usan el método findAccount
         var account = findAccount(iban);
 
         //Si la cuenta existe hacer:
         if (account != null) {
 
+            //Si la cantidad de dinero es mayor o igual que 0 hacer:
             if (amount >= 0){
+
+                //Ingresar esa cantidad en la cuenta y mostrar la cuenta con los nuevos cambios
                 account.deposit(amount);
                 account.showInfo();
 
@@ -121,36 +124,24 @@ public class Bank {
     }
 
 
-    public void deposit(String iban, double amount){
-
-        var account = findAccount(iban);
-        if (account != null){
-
-            account.deposit(amount);
-            account.showInfo();
-
-        } else {
-
-            System.out.println("Cuenta no encontrada");
-        }
-    }
-
-
-
 
     //Dado un NIF, devuelve el número de cuentas de ese cliente.
     public int countNumber(String nif) {
 
+        //Inicializamos el contador dandole el valor 0
         int counter = 0;
+
 
         for (Account account : accounts) {
 
             if (account.getCustomer().getNif().equals(nif)) {
 
+                //Incrementamos el contador
                 counter++;
             }
         }
 
+        //Devuelvo el número de cuentas de ese cliente
         return counter;
     }
 
@@ -158,8 +149,10 @@ public class Bank {
     //Dado un IBAN, devuelve los datos del cliente al que pertenece la cuenta. Si no existe la cuenta devuelve null.
     public Customer findAccountCustomer(String iban) {
 
+        //Busca la cuenta con ese parámetro
         Account account = findAccount(iban);
 
+        //Si la cuenta existe, la devolvemos
         if (account != null) {
 
             return account.getCustomer();
@@ -171,6 +164,46 @@ public class Bank {
 
 
     }
+
+
+    // Método de transferencia
+    //Dados dos IBAN y una cantidad de dinero, realiza una transferencia desde la cuenta con el primer IBAN a la cuenta con el segundo IBAN.
+    // Si una de las cuentas no existo o no hay suficiente saldo en la cuenta de origen no se realiza la trasnferencia y se muestra un error explicando el problema.
+
+    public void tranfer(String iban, String iban2, double amount){
+
+        //Buscamos las 2 cuentas, origen y destino
+        Account account = findAccount(iban);
+        Account account2 = findAccount(iban2);
+
+        //Si las 2 cuentas existen hacer:
+        if (account != null && account2 != null){
+
+            //Si el saldo de la cuenta de origen es mayor o igual que la cantidad que se quiere transferir
+            if (account.getBalance() >= amount){
+
+                //Quitamos la cantidad el la C.O y la añadimos en la C.D
+                account.deposit(-amount);
+                account2.deposit(+amount);
+
+                //Mostramos la info de las 2 cuentas para ver los cambios
+                account.showInfo();
+                account2.showInfo();
+
+
+            } else {
+
+                System.out.println("No hay suficiente dinero");
+            }
+
+        } else {
+
+            System.out.println("Una de las cuentas no existe");
+        }
+
+    }
+
+
 
 
     // Método para buscar una cuenta, luego la devuelve
@@ -206,54 +239,50 @@ public class Bank {
     }
 
 
-    // Método para buscar una cuenta, luego la devuelve
-    public Account findCustomer(String iban) {
 
-        for (Account account : accounts) {
+    //withdraw(amount): dado una cantidad saca el dinero de la cuenta. Si no hay suficiente saldo muestra un mensaje de error y no modifica el saldo.
+    public void withdraw(double amount, String iban){
 
-            if (account.getCustomer().equals(iban)) {
+        var account = findAccount(iban);
 
-                return account;
+        for (Account account2 : accounts){
 
-            }
-        }
+            //Si la cuenta existe
+            if (account2 != null){
 
-        return null;
+                if (account.getBalance() >= amount){
 
-    }
+                    account.deposit(-amount);
 
+                } else {
 
-    // Método de transferencia
-
-    public void tranfer(String iban, String iban2, double amount){
-
-        Account account = findAccount(iban);
-        Account account2 = findAccount(iban2);
-
-        if (account != null && account2 != null){
-
-            if (account.getBalance() >= amount){
-
-                account.deposit(-amount);
-                account2.deposit(+amount);
-
-                account.showInfo();
-                account2.showInfo();
-
+                    System.out.println("No hay suficiente dinero el la cuenta");
+                }
 
             } else {
 
-                System.out.println("No hay suficiente dinero");
+                System.out.println("Cuenta no encontrada");
             }
 
-        } else {
-
-            System.out.println("Una de las cuentas no existe");
         }
 
     }
 
 
+
+    public void deposit(String iban, double amount){
+
+        var account = findAccount(iban);
+        if (account != null){
+
+            account.deposit(amount);
+            account.showInfo();
+
+        } else {
+
+            System.out.println("Cuenta no encontrada");
+        }
+    }
 
 
     public String getBankName() {
