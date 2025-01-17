@@ -26,7 +26,7 @@ public class BankApp {
         Bank bank = bankReader.read();
 
 
-        //Inicia un bucle de menú con las siguientes opciones
+        //Inicia un bucle de menú  con las siguientes opciones
 
 
         // Creo la variable option
